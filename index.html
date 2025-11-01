@@ -1,92 +1,616 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Phishing Simulation Warning</title>
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday! 🎂</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    #new-page {
-      display: flex;
-      position: fixed;
-      top: 0; left: 0;
-      width: 100vw;
-      height: 100vh;
-      background-color: #967f65;
-      color: white;
-      z-index: 9999;
-      overflow-y: auto;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
-    }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #0a0a0a;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
 
-    .phishing-header {
-      width: 100%;
-      background-color: white;
-      padding: 20px 0;
-      display: flex;
-      justify-content: center;
-    }
+        /* Animated gradient background */
+        .bg-gradient {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #667eea, #764ba2, #f093fb, #4facfe);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            z-index: -2;
+        }
 
-    .phishing-header img {
-      height: 40px;
-    }
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
 
-    .phishing-content {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      color: black;
-      padding: 20px;
-    }
+        /* Particle effect */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
 
-    .phishing-content h1 {
-      font-size: 2.5rem;
-      margin-bottom: 20px;
-    }
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 50%;
+            animation: particleFloat 20s infinite;
+        }
 
-    .phishing-content p {
-      font-size: 1.5rem;
-      margin: 10px 0;
-      max-width: 800px;
-    }
+        @keyframes particleFloat {
+            0%, 100% {
+                transform: translateY(0) translateX(0);
+                opacity: 0;
+            }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% {
+                transform: translateY(-100vh) translateX(50px);
+                opacity: 0;
+            }
+        }
 
-    .phishing-content img {
-      width: 100%;
-      max-width: 600px;
-      border: 5px solid white;
-      box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-      border-radius: 8px;
-    }
-  </style>
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header {
+            text-align: center;
+            padding: 80px 20px;
+            animation: fadeInDown 1s ease;
+        }
+
+        .header h1 {
+            font-size: 4em;
+            color: #fff;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.5),
+                         0 0 40px rgba(102, 126, 234, 0.5);
+            margin-bottom: 20px;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 20px rgba(255, 255, 255, 0.5), 0 0 40px rgba(102, 126, 234, 0.5); }
+            to { text-shadow: 0 0 30px rgba(255, 255, 255, 0.8), 0 0 60px rgba(102, 126, 234, 0.8); }
+        }
+
+        .header p {
+            font-size: 1.3em;
+            color: #f0e6ff;
+            margin-top: 15px;
+            line-height: 1.8;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            background: rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            padding: 20px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            transition: all 0.5s ease;
+            animation: fadeInUp 0.6s ease forwards;
+            opacity: 0;
+            position: relative;
+        }
+
+        .card:nth-child(1) { animation-delay: 0.1s; }
+        .card:nth-child(2) { animation-delay: 0.2s; }
+        .card:nth-child(3) { animation-delay: 0.3s; }
+        .card:nth-child(4) { animation-delay: 0.4s; }
+        .card:nth-child(5) { animation-delay: 0.5s; }
+        .card:nth-child(6) { animation-delay: 0.6s; }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #667eea, #764ba2, #f093fb, #4facfe);
+            border-radius: 25px;
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .card:hover::before {
+            opacity: 1;
+        }
+
+        .card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 20px 60px rgba(102, 126, 234, 0.4);
+        }
+
+        .card-image-wrapper {
+            width: 100%;
+            height: 300px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .card-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+            filter: brightness(0.9);
+        }
+
+        .card:hover .card-image {
+            transform: scale(1.1) rotate(2deg);
+            filter: brightness(1.1);
+        }
+
+        .card-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.3) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .card:hover .card-overlay {
+            opacity: 1;
+        }
+
+        .card-content {
+            padding: 30px;
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        .card-content h3 {
+            color: #fff;
+            font-size: 1.7em;
+            margin-bottom: 15px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .card-content p {
+            color: #f0e6ff;
+            line-height: 1.7;
+            font-size: 1.05em;
+        }
+
+        .floating-hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1000;
+        }
+
+        .heart {
+            position: absolute;
+            font-size: 2em;
+            animation: float 4s infinite;
+            opacity: 0;
+            filter: drop-shadow(0 0 10px rgba(255, 105, 180, 0.8));
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            0% {
+                opacity: 0;
+                transform: translateY(100vh) rotate(0deg) scale(1);
+            }
+            10% {
+                opacity: 1;
+            }
+            50% {
+                transform: translateY(50vh) rotate(180deg) scale(1.2);
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-100px) rotate(360deg) scale(0.8);
+            }
+        }
+
+        .footer {
+            text-align: center;
+            padding: 60px 20px;
+            color: #fff;
+            font-size: 1.4em;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        /* Sparkle effect */
+        .sparkle {
+            position: fixed;
+            width: 3px;
+            height: 3px;
+            background: white;
+            border-radius: 50%;
+            pointer-events: none;
+            animation: sparkleAnim 1s ease-out forwards;
+            z-index: 9999;
+        }
+
+        @keyframes sparkleAnim {
+            0% {
+                opacity: 1;
+                transform: scale(0);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            100% {
+                opacity: 0;
+                transform: scale(0);
+            }
+        }
+
+        /* Music control button */
+        .music-control {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 5px 25px rgba(102, 126, 234, 0.5);
+            z-index: 10000;
+            transition: all 0.3s ease;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            animation: musicPulse 2s ease-in-out infinite;
+        }
+
+        .music-control:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 35px rgba(102, 126, 234, 0.7);
+        }
+
+        .music-control.playing {
+            animation: musicPulse 2s ease-in-out infinite, spin 3s linear infinite;
+        }
+
+        @keyframes musicPulse {
+            0%, 100% { box-shadow: 0 5px 25px rgba(102, 126, 234, 0.5); }
+            50% { box-shadow: 0 5px 35px rgba(102, 126, 234, 0.8), 0 0 50px rgba(102, 126, 234, 0.4); }
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .music-control svg {
+            width: 35px;
+            height: 35px;
+            fill: white;
+            filter: drop-shadow(0 2px 5px rgba(0,0,0,0.3));
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.5em;
+            }
+            
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+
+            .card-content h3 {
+                font-size: 1.4em;
+            }
+
+            .music-control {
+                width: 60px;
+                height: 60px;
+                bottom: 20px;
+                right: 20px;
+            }
+
+            .music-control svg {
+                width: 30px;
+                height: 30px;
+            }
+        }
+    </style>
 </head>
 <body>
-
-  <div id="new-page">
-    <div class="phishing-header">
-      <img src="https://bmcc.org.my/cms/images/files/2024/08/KPJ-Logo-1024x213.png" alt="KnowBe4 Logo">
+    <div class="bg-gradient"></div>
+    <div class="particles" id="particles"></div>
+    <div class="floating-hearts" id="hearts"></div>
+    
+    <!-- Music Control Button -->
+    <div class="music-control" id="musicControl" title="Click to play music">
+        <svg id="playIcon" viewBox="0 0 24 24">
+            <path d="M8 5v14l11-7z"/>
+        </svg>
+        <svg id="pauseIcon" viewBox="0 0 24 24" style="display: none;">
+            <path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"/>
+        </svg>
     </div>
-    <div class="phishing-content">
-      <h1>Oops! You clicked on a phishing email</h1>
-      <p>Please take a minute to review the Social Engineering indicators found in the email you received.<br>Hover over the red flags to see details:</p>
-      <img src="https://raw.githubusercontent.com/xiaosesec/test/refs/heads/main/page.png" alt="Phishing Alert Image">
-    </div>
-  </div>
-  
-  <script>
-  setTimeout(function() {
-    window.location.href = "https://login.microsoftonline.com/";
-  }, 3000);
-</script>
+    
+    <!-- Background Music -->
+    <iframe 
+        id="youtube-audio"
+        width="0" 
+        height="0" 
+        src="https://www.youtube.com/embed/GAf2DQPYvGE?enablejsapi=1&loop=1&playlist=GAf2DQPYvGE" 
+        frameborder="0" 
+        allow="autoplay; encrypted-media" 
+        allowfullscreen
+        style="display: none;">
+    </iframe>
+    
+    <div class="container">
+        <div class="header">
+            <h1>🎉 Happy Birthday Sayanggg! 🎉</h1>
+            <p>To the most amazing person in my life ❤️</p>
+            <p>Happy Birthday to the most beautiful girl in my world.
+Semoga setiap langkah hidup awak sentiasa diberkati dengan rezeki yang melimpah, kesihatan yang berpanjangan, dan kebahagiaan yang tak pernah pudar.
 
+Terima kasih untuk 4 tahun yang sangat bermakna, tahun-tahun yang penuh dengan tawa, air mata, dan kenangan yang akan saya simpan selamanya. Terima kasih sebab masih di sini, tetap setia walaupun saya banyak kekurangan dan kadang buat awak kecewa.
+
+Saya tahu bukan mudah untuk bertahan dengan saya, tapi awak tetap sabar, tetap pilih untuk faham, dan tetap pilih saya setiap kali ada pilihan untuk pergi. Itu sesuatu yang saya sangat hargai dan takkan pernah lupakan.
+
+Awaklah orang yang buat hidup saya lebih bermakna, yang ajar saya tentang kesetiaan dan kasih sayang sebenar.
+Semoga awak terus kekal cantik, bukan saja di mata saya, tapi juga di hati semua orang.
+
+Selamat hari lahir, sayang. ❤️
+Saya sayang awak — hari ini, esok, dan selama-lamanya.</p>
+        </div>
+
+        <div class="gallery">
+            <div class="card">
+                <div class="card-image-wrapper">
+                    <img src="https://github.com/xiaosesec/xiaosesec.github.io/blob/main/photos/1.JPG?raw=true" alt="Memory 1" class="card-image">
+                    <div class="card-overlay"></div>
+                </div>
+                <div class="card-content">
+                    <h3>I Love You</h3>
+                    <p>Setiap detik bersama awak adalah satu anugerah yang tak ternilai.
+Terima kasih kerana menjadi cahaya dalam hidup saya, orang yang sentiasa menerangi hari-hari saya walaupun ketika dunia terasa gelap.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-image-wrapper">
+                    <img src="https://github.com/xiaosesec/xiaosesec.github.io/blob/main/photos/2.JPG?raw=true" alt="Memory 2" class="card-image">
+                    <div class="card-overlay"></div>
+                </div>
+                <div class="card-content">
+                    <h3>Pencinta Kucing</h3>
+                    <p>Your smile is my favorite thing in the world. I'm so grateful for all the beautiful memories we've created together.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-image-wrapper">
+                    <img src="https://github.com/xiaosesec/xiaosesec.github.io/blob/main/photos/3.JPG?raw=true" alt="Memory 3" class="card-image">
+                    <div class="card-overlay"></div>
+                </div>
+                <div class="card-content">
+                    <h3>Together Forever</h3>
+                    <p>Saya sangat bersyukur untuk setiap kenangan indah yang kita cipta bersama, dari saat-saat kecil yang mungkin nampak biasa, 
+                        sampai momen besar yang saya takkan pernah lupakan. Semua itu berharga dan tersimpan dalam hati saya</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-image-wrapper">
+                    <img src="https://github.com/xiaosesec/xiaosesec.github.io/blob/main/photos/4.JPG?raw=true" alt="Memory 4" class="card-image">
+                    <div class="card-overlay"></div>
+                </div>
+                <div class="card-content">
+                    <h3>Endless Love</h3>
+                    <p>You're not just my girlfriend, you're my best friend and my everything. Thank you for being you.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-image-wrapper">
+                    <img src="https://github.com/xiaosesec/xiaosesec.github.io/blob/main/photos/5.JPG?raw=true" alt="Memory 5" class="card-image">
+                    <div class="card-overlay"></div>
+                </div>
+                <div class="card-content">
+                    <h3>Sweet Memories</h3>
+                    <p>Every day with you feels like a celebration. You bring so much joy and love into my life.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-image-wrapper">
+                    <img src="https://github.com/xiaosesec/xiaosesec.github.io/blob/main/photos/7.JPG?raw=true" alt="Memory 6" class="card-image">
+                    <div class="card-overlay"></div>
+                </div>
+                <div class="card-content">
+                    <h3>My Everything</h3>
+                    <p>Happy birthday to the most pretty girl in the world 🎂💕</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>With all my love, forever and always 💖</p>
+        </div>
+    </div>
+
+    <script>
+        // Music control
+        let isPlaying = false;
+        const musicControl = document.getElementById('musicControl');
+        const playIcon = document.getElementById('playIcon');
+        const pauseIcon = document.getElementById('pauseIcon');
+        const iframe = document.getElementById('youtube-audio');
+
+        musicControl.addEventListener('click', () => {
+            if (!isPlaying) {
+                // Play music by reloading iframe with autoplay
+                iframe.src = 'https://www.youtube.com/embed/GAf2DQPYvGE?autoplay=1&loop=1&playlist=GAf2DQPYvGE';
+                playIcon.style.display = 'none';
+                pauseIcon.style.display = 'block';
+                musicControl.classList.add('playing');
+                isPlaying = true;
+            } else {
+                // Pause by removing iframe src
+                iframe.src = '';
+                playIcon.style.display = 'block';
+                pauseIcon.style.display = 'none';
+                musicControl.classList.remove('playing');
+                isPlaying = false;
+            }
+        });
+
+        // Create particles
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            for (let i = 0; i < 50; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 20 + 's';
+                particle.style.animationDuration = (Math.random() * 10 + 15) + 's';
+                particlesContainer.appendChild(particle);
+            }
+        }
+        createParticles();
+
+        // Create floating hearts
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            const hearts = ['💖', '💗', '💕', '💓', '💝'];
+            heart.innerHTML = hearts[Math.floor(Math.random() * hearts.length)];
+            heart.style.left = Math.random() * 100 + '%';
+            heart.style.animationDuration = (Math.random() * 3 + 3) + 's';
+            heart.style.animationDelay = Math.random() * 2 + 's';
+            document.getElementById('hearts').appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 6000);
+        }
+
+        setInterval(createHeart, 600);
+
+        // Sparkle effect on mouse move
+        let lastSparkle = 0;
+        document.addEventListener('mousemove', (e) => {
+            const now = Date.now();
+            if (now - lastSparkle > 50) {
+                const sparkle = document.createElement('div');
+                sparkle.classList.add('sparkle');
+                sparkle.style.left = e.clientX + 'px';
+                sparkle.style.top = e.clientY + 'px';
+                document.body.appendChild(sparkle);
+                
+                setTimeout(() => sparkle.remove(), 1000);
+                lastSparkle = now;
+            }
+        });
+
+        // Enhanced parallax effect with tilt
+        document.addEventListener('mousemove', (e) => {
+            const cards = document.querySelectorAll('.card');
+            const x = (e.clientX / window.innerWidth) - 0.5;
+            const y = (e.clientY / window.innerHeight) - 0.5;
+
+            cards.forEach((card, index) => {
+                const speed = (index + 1) * 3;
+                const xOffset = x * speed;
+                const yOffset = y * speed;
+                const rotateX = y * 5;
+                const rotateY = x * 5;
+                
+                card.style.transform = `
+                    translate(${xOffset}px, ${yOffset}px) 
+                    perspective(1000px) 
+                    rotateX(${rotateX}deg) 
+                    rotateY(${rotateY}deg)
+                `;
+            });
+        });
+
+        // Reset card transforms on mouse leave
+        document.addEventListener('mouseleave', () => {
+            const cards = document.querySelectorAll('.card');
+            cards.forEach(card => {
+                card.style.transform = '';
+            });
+        });
+    </script>
 </body>
 </html>
